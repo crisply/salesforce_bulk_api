@@ -35,6 +35,10 @@ module SalesforceBulkApi
       do_operation('delete', sobject, records, nil, get_response, timeout, batch_size)
     end
 
+    def hard_delete(sobject, records, get_response = false, batch_size = 10000, timeout = 1500)
+      do_operation('hardDelete', sobject, records, nil, get_response, timeout, batch_size)
+    end
+
     def query(sobject, query, batch_size = 10000, timeout = 1500)
       do_operation('query', sobject, query, nil, true, timeout, batch_size)
     end
@@ -47,6 +51,7 @@ module SalesforceBulkApi
         update: @counters[:update],
         create: @counters[:create],
         delete: @counters[:delete],
+        hard_delete: @counters[:hard_delete],
         query: @counters[:query]
       }
     end
